@@ -81,19 +81,36 @@ function showDebugInfo() {
   // background
   rect(0,0,200,150);
   fill(255);
-  text("debug info", 20, 30);
+  // text("debug info", 20, 30);
 
   // movement
   var moveText = "moving: " + moving;
-  text(moveText, 20, 60);
+  text(moveText, 20, 30);
 
   // smile
   var smilingText = "smiling: " + smiling;
-  text(smilingText, 20, 80);
+  text(smilingText, 20, 50);
 
   // timer
   var timeText = "time remaining: " + int(poseTimeRemaining / 10);
-  text(timeText, 20, 100);
+  text(timeText, 20, 80);
+
+  // life bar
+  var lifeText = "life bar:";
+  text(lifeText, 20, 100);
+
+  rectMode(CORNER);
+  fill(255);
+  stroke(255);
+  rect(20, 110, 160, 10); //life bar background
+
+  if (captureScale < 0.5) {
+    fill(255,0,0);
+  } else {
+    fill(0);
+  }
+  rect(20, 110, 200 * (captureScale - 0.2), 10); // life bar
+
 }
 
 function checkSmile() {
@@ -173,36 +190,30 @@ function checkPose() {
 function showGameOver() {
   noLoop();
   pop();
-  // noStroke();
-  // fill(0);
-  // rectMode(CENTER);
-  // rect(width/2, height/2, 300, 100);
   textAlign(CENTER);
   noStroke();
   fill(255);
   textSize(12);
-  text("you failed to escape the sunken place.\nthey have your body now.",
+  text("you failed to escape the sunken place. they have your body now.",
         width/2,
-        height/2);
+        windowHeight/2);
 }
 
 function showGameWon() {
   noLoop();
   pop();
-  // noStroke();
-  // fill(0);
-  // rectMode(CENTER);
-  // rect(width/2, height/2, 300, 100);
   textAlign(CENTER);
   noStroke();
   fill(255);
   textSize(12);
-  text("you escaped the sunken place with your own face. congrats.", width/2, height/2);
+  text("you escaped the sunken place with your own face. congrats.", width/2, windowHeight/2);
 }
 
-// main run function
+// main game
 // tracks face, attachs features, checks for posing, etc.
-function run() {
+function playGame() {
+  noFill();
+  noStroke();
   push();
 
   // horizontally flip capture so we look good lol

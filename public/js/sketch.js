@@ -23,6 +23,9 @@ var rightEyePath;
 var nosePath;
 var mouthPath;
 
+// background stuff
+var stars = [];
+
 function setImagePaths() {
   leftEyePath = '/images/left_eye/' + int(random(1,5)) + '.png';
   rightEyePath = '/images/right_eye/' + int(random(1,5)) + '.png';
@@ -39,6 +42,11 @@ function preload() {
 }
 
 function setup() {
+
+  // fill stars array
+  for (var i=0; i<25; i++) {
+    stars.push(new Star());
+  }
 
   // motion detection
   video = createCapture(VIDEO);
@@ -71,5 +79,5 @@ function setup() {
 }
 
 function draw() {
-  run(); // run main app
+  run();
 }
