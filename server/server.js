@@ -26,10 +26,6 @@ app.use(express.static(__dirname + '../public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// store menu and current day in constants
-let MENU;
-let CURRENT_DAY;
-
 app.get('/', (req, res) => {
   res.render('home');
 })
