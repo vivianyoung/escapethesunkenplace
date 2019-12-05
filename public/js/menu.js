@@ -19,7 +19,7 @@ function run() {
   textSize(12);
 
   if (currentScreen == "intro") {
-    if (secElapsed < textTime * 3) {
+    if (secElapsed < (textTime * 3) + 2) {
       drawIntro();
     } else {
       currentScreen = "instructions";
