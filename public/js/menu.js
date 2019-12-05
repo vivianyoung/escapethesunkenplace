@@ -2,7 +2,7 @@ var secElapsed = 0;
 var currentScreen = "intro";
 var currentText = "welcome to upstate new york.";
 var currentBackground = "stars";
-var textTime = 3;
+var textTime = 4;
 
 var Y_AXIS = 1;
 var c1;
