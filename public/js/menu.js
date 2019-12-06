@@ -243,11 +243,6 @@ function keyPressed() {
   if (keyCode == 32) { // press space to start game
     currentScreen = "game";
   }
-  if (keyCode == 82) { // press 'r' to restart
-    loop();
-    console.log("restarting...");
-    currentScreen = "title";
-  }
   if (keyCode == 80) { // press 'p' to pause
     var w = 5;
     var h = 15;
