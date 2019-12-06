@@ -25,6 +25,7 @@ var mouthPath;
 
 // background stuff
 var stars = [];
+var texts = [];
 
 function setImagePaths() {
   leftEyePath = '/images/left_eye/' + int(random(1,5)) + '.png';
@@ -46,6 +47,11 @@ function setup() {
   // fill stars array
   for (var i=0; i<25; i++) {
     stars.push(new Star());
+  }
+
+  // fill texts array
+  for (var i = 0; i < 15; i++) {
+    texts.push(new TextObj());
   }
 
   // motion detection

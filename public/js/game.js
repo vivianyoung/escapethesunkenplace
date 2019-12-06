@@ -229,7 +229,6 @@ function playGame() {
     noTint();
   }
 
-  console.log(captureScale);
   scale(captureScale, captureScale);
   // image(capture, width/2, height/2, w * captureScale, h * captureScale);
   image(capture, width/2, height/2, w, h);

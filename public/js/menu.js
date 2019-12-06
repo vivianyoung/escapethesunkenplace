@@ -1,5 +1,6 @@
 var secElapsed = 0;
-var currentScreen = "intro";
+// var currentScreen = "intro";
+var currentScreen = "title";
 var currentText = "welcome to upstate new york.";
 var currentBackground = "stars";
 var textTime = 4;
@@ -10,25 +11,40 @@ var c2;
 var inc = 0.005;
 var start = 0;
 
-function run() {
+var paused = false;
 
-  textAlign(CENTER);
-  textFont('Andale Mono');
-  noStroke();
-  fill(255);
-  textSize(12);
+//////////////////////////////////////////////////////////////////////////////
 
-  if (currentScreen == "intro") {
-    if (secElapsed < (textTime * 3) + 2) {
-      drawIntro();
-    } else {
-      currentScreen = "instructions";
-      drawInstructions();
-    }
+// get out text
+function TextObj() {
+  this.x = random(5, windowWidth - 5);
+  this.y = random(10, (windowHeight - 10) * 0.6);
+  this.speed = random(2,8);
+  this.velocity = 1;
+  // this.color = color(random(0,255), random(0,255), random(0,255));
+  this.color = color(70);
+  this.size = 12;
+  this.text = "get out";
+
+  this.display = function() {
+    textSize(this.size);
+    fill(this.color);
+    text(this.text, this.x, this.y);
   }
 
-  if (currentScreen == "game") {
-    playGame();
+  this.move = function() {
+    if (this.y < 0 || this.y > windowHeight) {
+      this.velocity *= -1;
+    }
+    this.y = this.y + this.velocity * this.speed;
+  }
+}
+
+function drawTexts() {
+  // twinkling stars
+  for (var i =0; i<texts.length; i++) {
+    texts[i].display();
+    texts[i].move();
   }
 }
 
@@ -116,8 +132,65 @@ function drawBackground(bg) {
   }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+function run() {
+
+  textAlign(CENTER);
+  textFont('Andale Mono');
+  noStroke();
+  fill(255);
+  textSize(12);
+
+  if (currentScreen == "title") {
+    drawTitle();
+  }
+
+  if (currentScreen == "intro") {
+    if (secElapsed < (textTime * 3) + 2) {
+      drawIntro();
+    } else {
+      currentScreen = "instructions";
+      drawInstructions();
+    }
+  }
+
+  if (currentScreen == "game") {
+    playGame();
+  }
+}
+
+function drawTitle() {
+  currentScreen = "title";
+
+  var textCount = 0;
+  var t = "get out";
+  var tBuffer = 30;
+
+  noStroke();
+  fill(0);
+  rect(0, 0, width, height);
+
+  drawTexts();
+
+  fill(255);
+  textAlign(CENTER);
+  text("click to start", width/2, windowHeight/2);
+
+  // if (frameCount % 30 == 0) {
+  //   while (textCount < 50) {
+  //     fill(random(0,255), random(0,255), random(0,255));
+  //     var tX = int(random(tBuffer, windowWidth - tBuffer));
+  //     var tY = int(random(tBuffer, windowHeight - tBuffer));
+  //     text(t, tX, tY);
+  //     textCount += 1;
+  //   }
+  // }
+}
+
 function drawInstructions() {
   currentScreen = "instructions";
+
   // black background
   noStroke();
   fill(0);
@@ -129,6 +202,7 @@ function drawInstructions() {
 }
 
 function drawIntro() {
+
   noStroke();
   fill(0);
   rect(0,0,width, height);
@@ -165,8 +239,40 @@ function drawIntro() {
 }
 
 function keyPressed() {
-  if (keyCode == 32) {
+  if (keyCode == 32) { // press space to start game
     currentScreen = "game";
-    return false;
   }
+  if (keyCode == 82) { // press 'r' to restart
+    loop();
+    console.log("restarting...");
+    currentScreen = "title";
+  }
+  if (keyCode == 80) { // press 'p' to pause
+    var w = 5;
+    var h = 15;
+    var pause1;
+    var pause2;
+
+    paused = !paused;
+
+    if (paused) {
+      console.log("pause");
+      fill(255);
+      translate(0,0);
+      pause1 = rect(windowWidth - 50 , 50, w, h);
+      pause2 = rect(windowWidth - 40 , 50, w, h);
+      noLoop();
+    } else {
+      console.log("play");
+      pause1 = null;
+      pause2 = null;
+      loop();
+    }
+  }
+  return false;
+}
+
+function mousePressed() {
+  currentScreen = "intro";
+  return false;
 }
