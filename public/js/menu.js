@@ -140,7 +140,7 @@ function run() {
   textFont('Andale Mono');
   noStroke();
   fill(255);
-  textSize(12);
+  textSize(15);
 
   if (currentScreen == "title") {
     drawTitle();
@@ -175,6 +175,7 @@ function drawTitle() {
 
   fill(255);
   textAlign(CENTER);
+  textSize(15);
   text("click to start", width/2, windowHeight/2);
 
   // if (frameCount % 30 == 0) {
@@ -211,7 +212,7 @@ function drawIntro() {
   textFont('Andale Mono');
   noStroke();
   fill(255);
-  textSize(12);
+  textSize(15);
 
   if (frameCount % 60 == 0) {
     secElapsed += 1;

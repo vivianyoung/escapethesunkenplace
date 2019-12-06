@@ -195,7 +195,7 @@ function showGameOver() {
   textAlign(CENTER);
   noStroke();
   fill(255);
-  textSize(12);
+  textSize(15);
   text("you failed to escape the sunken place. they have your body now.",
         width/2,
         windowHeight/2);
@@ -207,7 +207,7 @@ function showGameWon() {
   textAlign(CENTER);
   noStroke();
   fill(255);
-  textSize(12);
+  textSize(15);
   text("you escaped the sunken place with your own face and body. congrats.", width/2, windowHeight/2);
 }
 
