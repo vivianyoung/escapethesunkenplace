@@ -103,7 +103,7 @@ function drawBackground(bg) {
   if (bg == "stars") {
 
     c1 = color(0);
-    c2 = color(4, 25, 59);
+    c2 = color(9, 59, 202);
 
     // gradient background
     setGradient(0, 0, windowWidth, windowHeight, c1, c2, Y_AXIS);
