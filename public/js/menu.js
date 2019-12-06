@@ -125,7 +125,7 @@ function drawInstructions() {
 
   fill(255);
   textAlign(LEFT);
-  text("instructions:\n\nsmile!\ndon't move!\nand perhaps they will let you get away ...\n\n\n\npress any key to start.", width/2 - 200, windowHeight/2 - 100);
+  text("instructions:\n\nsmile!\ndon't move!\nand perhaps they will let you get away ...\n\n\n\npress space to start.", width/2 - 200, windowHeight/2 - 100);
 }
 
 function drawIntro() {
