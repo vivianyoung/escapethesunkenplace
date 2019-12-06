@@ -18,7 +18,7 @@ var paused = false;
 // get out text
 function TextObj() {
   this.x = random(5, windowWidth - 5);
-  this.y = random(10, (windowHeight - 10) * 0.6);
+  this.y = 0;
   this.speed = random(2,8);
   this.velocity = 1;
   // this.color = color(random(0,255), random(0,255), random(0,255));
