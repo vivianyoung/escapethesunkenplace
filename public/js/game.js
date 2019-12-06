@@ -72,6 +72,8 @@ function showFacePoints() {
 }
 
 function showDebugInfo() {
+  push();
+  translate(50,50);
   noStroke();
   fill(0);
   textSize(12);
@@ -110,7 +112,7 @@ function showDebugInfo() {
     fill(0);
   }
   rect(20, 110, 200 * (captureScale - 0.2), 10); // life bar
-
+  pop();
 }
 
 function checkSmile() {
@@ -206,7 +208,7 @@ function showGameWon() {
   noStroke();
   fill(255);
   textSize(12);
-  text("you escaped the sunken place with your own face. congrats.", width/2, windowHeight/2);
+  text("you escaped the sunken place with your own face and body. congrats.", width/2, windowHeight/2);
 }
 
 // main game
@@ -245,7 +247,6 @@ function playGame() {
     }
 
     if (captureScale < 0.20) {
-      // noLoop();
       showGameOver();
     } else if (captureScale >= 1) {
       showGameWon();
