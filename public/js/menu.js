@@ -3,7 +3,7 @@ var secElapsed = 0;
 var currentScreen = "title";
 var currentText = "welcome to upstate new york.";
 var currentBackground = "stars";
-var textTime = 2.5;
+var textTime = 2;
 
 var Y_AXIS = 1;
 var c1;
@@ -21,7 +21,6 @@ function TextObj() {
   this.y = 0;
   this.speed = random(2,8);
   this.velocity = 1;
-  // this.color = color(random(0,255), random(0,255), random(0,255));
   this.color = color(70);
   this.size = 12;
   this.text = "get out";
